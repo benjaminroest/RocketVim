@@ -1,13 +1,12 @@
 return require('packer').startup({function()
 	use 'wbthomason/packer.nvim'
-	use 'arcticicestudio/nord-vim'
 
 	-- Tab bar
 	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
 	-- Explorer
 	use 'kyazdani42/nvim-tree.lua'
-	use 'ahmedkhalf/lsp-rooter.nvim'
+	use 'airblade/vim-rooter'
 
 	-- Misc
 	use 'windwp/nvim-autopairs'
@@ -47,6 +46,7 @@ return require('packer').startup({function()
 		'lewis6991/gitsigns.nvim',
 		requires = { 'nvim-lua/plenary.nvim' }
 	}
+	use 'tpope/vim-fugitive'
 
 	-- Dashboard
 	use {
