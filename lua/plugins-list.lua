@@ -4,6 +4,14 @@ return require('packer').startup({function()
 	-- Tab bar
 	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
+	-- Statusline
+	use { 
+		"glepnir/galaxyline.nvim", 
+		branch = "main",
+		config = function() require'plugins.galaxyline' end,
+		event = "BufWinEnter"
+	}
+
 	-- Explorer
 	use 'kyazdani42/nvim-tree.lua'
 	use 'airblade/vim-rooter'
@@ -16,6 +24,15 @@ return require('packer').startup({function()
   use {
 		'tpope/vim-commentary',
 		cmd = "Commentary"
+	}
+
+	-- smooth scroll
+	use {
+		"karb94/neoscroll.nvim",
+		event = "WinScrolled",
+		config = function()
+			require("neoscroll").setup()
+		end,
 	}
 
 	-- Treesitter

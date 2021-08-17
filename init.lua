@@ -13,6 +13,7 @@ require "plugins.gitsigns"
 require "plugins.compe"
 require "plugins.telescope"
 require "plugins.whichkey"
+require "plugins.rooter"
 
 -- Lsp
 require "lsp"
