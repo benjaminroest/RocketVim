@@ -69,7 +69,7 @@ vim.api.nvim_set_keymap('n', '<Leader>o', ':ClangdSwitchSourceHeader<CR>', {nore
 vim.api.nvim_set_keymap("n", "<leader>/", ":Commentary<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", "<leader>/", ":Commentary<CR>", {noremap = true, silent = true})
 
-vim.api.nvim_set_keymap("v", "<leader>cf", ":lua vim.lsp.buf.range_formatting()<CR>", {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("v", "<leader>cf", ":lua vim.lsp.buf.range_formatting()<CR>", {noremap = true, silent = true})
 
 local mappings_n = {
 	["/"] = "Comment",
@@ -95,7 +95,7 @@ local mappings_v = {
 	["/"] = "Comment",
 	c = {
 		name = "Code",
-		["f"] = "Format"
+		f = {"<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format"}
 	}
 }
 
