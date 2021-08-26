@@ -6,6 +6,7 @@ require "keymappings"
 -- Plugins
 require "plugins.nvimtree"
 require "plugins.nvimbufferline"
+require "plugins.lualine"
 require "plugins.dashboard"
 require "plugins.treesitter"
 require "plugins.autopairs"

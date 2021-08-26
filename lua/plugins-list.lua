@@ -5,12 +5,7 @@ return require('packer').startup({function()
 	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
 	-- Statusline
-	use { 
-		"glepnir/galaxyline.nvim", 
-		branch = "main",
-		config = function() require'plugins.galaxyline' end,
-		event = "BufWinEnter"
-	}
+	use 'hoob3rt/lualine.nvim'
 
 	-- Explorer
 	use 'kyazdani42/nvim-tree.lua'
@@ -26,15 +21,6 @@ return require('packer').startup({function()
 		cmd = "Commentary"
 	}
 
-	-- smooth scroll
-	use {
-		"karb94/neoscroll.nvim",
-		event = "WinScrolled",
-		config = function()
-			require("neoscroll").setup()
-		end,
-	}
-
 	-- Treesitter
 	use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 	use 'windwp/nvim-ts-autotag'
@@ -42,6 +28,13 @@ return require('packer').startup({function()
 
 	-- Lsp
 	use 'neovim/nvim-lspconfig'
+	use {
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		config = function()
+			require("lsp_signature").setup()
+		end,
+	}
 	use 'kabouzeid/nvim-lspinstall'
  	use 'glepnir/lspsaga.nvim'
 

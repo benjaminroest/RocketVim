@@ -10,10 +10,10 @@ require "bufferline".setup {
 		separator_style = "slant",
 		indicator_icon = "",
 		custom_filter = function(buf_number)
-      -- filter out quick fix window
-      if vim.bo[buf_number].filetype ~= "qf" then
-        return true
-      end
+			-- filter out quick fix window
+			if vim.bo[buf_number].filetype ~= "qf" then
+				return true
+			end
 		end,
 	},
 }
