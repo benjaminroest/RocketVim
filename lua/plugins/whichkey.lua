@@ -1,6 +1,6 @@
 require("which-key").setup {
     plugins = {
-        marks = true, -- shows a list of your marks on ' and `
+        marks = true, -- shows a list of your marks on " and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
         -- the presets plugin, adds help for a bunch of default keybindings in Neovim
         -- No actual key bindings are created
@@ -16,7 +16,7 @@ require("which-key").setup {
     },
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = "➜", -- symbol used between a key and it's label
+        separator = "➜", -- symbol used between a key and it"s label
         group = " " -- symbol prepended to a group
     },
     window = {
@@ -35,8 +35,8 @@ require("which-key").setup {
 }
 
 -- Set leader
-vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true})
-vim.g.mapleader = ' '
+vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", {noremap = true, silent = true})
+vim.g.mapleader = " "
 
 local opts_n = {
     mode = "n", -- NORMAL mode
@@ -57,13 +57,13 @@ local opts_v = {
 }
 
 -- Explorer
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
 
 -- Buffer pick
-vim.api.nvim_set_keymap('n', '<Leader>b', ':BufferLinePick<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>b", ":BufferLinePick<CR>", {noremap = true, silent = true})
 
 -- Switch between h/cpp
-vim.api.nvim_set_keymap('n', '<Leader>o', ':ClangdSwitchSourceHeader<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>o", ":ClangdSwitchSourceHeader<CR>", {noremap = true, silent = true})
 
 -- Comments
 vim.api.nvim_set_keymap("n", "<leader>/", ":Commentary<CR>", {noremap = true, silent = true})
@@ -86,8 +86,8 @@ local mappings_n = {
 		name = "Code",
 		f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format"},
 		a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Actions"},
-		j = {"<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }}})<CR>", "Next Diagnostic"},
-		k = {"<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }}})<CR>", "Prev Diagnostic"}
+		j = {"<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }}})<CR>", "Next Diagnostic"},
+		k = {"<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }}})<CR>", "Prev Diagnostic"}
 	}
 }
 

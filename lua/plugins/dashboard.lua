@@ -40,5 +40,5 @@ g.dashboard_custom_section = {
 
 g.dashboard_custom_footer = {""}
 
-vim.api.nvim_command('autocmd FileType dashboard set showtabline=0 laststatus=0')
-vim.api.nvim_command('autocmd WinLeave <buffer> set showtabline=2 laststatus=2')
+vim.api.nvim_command("autocmd FileType dashboard set showtabline=0 laststatus=0")
+vim.api.nvim_command("autocmd WinLeave <buffer> set showtabline=2 laststatus=2")
