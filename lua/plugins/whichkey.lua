@@ -86,8 +86,8 @@ local mappings_n = {
 		name = "Code",
 		f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format"},
 		a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Actions"},
-		j = {"<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }}})<CR>", "Next Diagnostic"},
-		k = {"<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }}})<CR>", "Prev Diagnostic"}
+		j = {"<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }}})<CR>", "Next Diagnostic"},
+		k = {"<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }}})<CR>", "Prev Diagnostic"}
 	}
 }
 
