@@ -1,8 +1,10 @@
 require'lspinstall'.setup() -- important
+local coq = require("coq")
+local lsp = require("lspconfig")
 
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
-	require'lspconfig'[server].setup{}
+	lsp[server].setup(coq.lsp_ensure_capabilities())
 end
 
 -- Install ccls

@@ -39,7 +39,7 @@ return require("packer").startup({function()
  	use "glepnir/lspsaga.nvim"
 
 	-- Autocompletion
-	use "hrsh7th/nvim-compe"
+	use "ms-jpq/coq_nvim"
 	use "hrsh7th/vim-vsnip"
 
 	-- Telescope
@@ -56,7 +56,6 @@ return require("packer").startup({function()
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" }
 	}
-	use "tpope/vim-fugitive"
 
 	-- Dashboard
 	use {
