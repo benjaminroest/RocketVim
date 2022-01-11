@@ -63,7 +63,6 @@ return packer.startup(function(use)
 	-- Treesitter
 	use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 	use "windwp/nvim-ts-autotag"
-	use "andymass/vim-matchup"
 
 	-- Lsp
 	use "neovim/nvim-lspconfig"
