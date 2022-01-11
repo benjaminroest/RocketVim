@@ -14,7 +14,6 @@ require "plugins.autopairs"
 require "plugins.gitsigns"
 require "plugins.telescope"
 require "plugins.whichkey"
-require "plugins.rooter"
 
 -- Lsp
-require "lsp"
+-- require "lsp"
