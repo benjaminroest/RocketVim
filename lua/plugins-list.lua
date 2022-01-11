@@ -79,8 +79,10 @@ return packer.startup(function(use)
  	use "glepnir/lspsaga.nvim"
 
 	-- Autocompletion
-	use "ms-jpq/coq_nvim"
-	use "hrsh7th/vim-vsnip"
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
 	-- Telescope
 	use {
