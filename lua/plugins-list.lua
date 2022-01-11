@@ -67,18 +67,11 @@ return packer.startup(function(use)
 
 	-- Lsp
 	use "neovim/nvim-lspconfig"
-	use {
-		"ray-x/lsp_signature.nvim",
-		event = "InsertEnter",
-		config = function()
-			require("lsp_signature").setup()
-		end,
-	}
-	use "kabouzeid/nvim-lspinstall"
- 	use "glepnir/lspsaga.nvim"
+	use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
 	-- Autocompletion
   use "hrsh7th/nvim-cmp" -- The completion plugin
+	use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions

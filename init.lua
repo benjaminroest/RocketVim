@@ -16,4 +16,4 @@ require "plugins.telescope"
 require "plugins.whichkey"
 
 -- Lsp
--- require "lsp"
+require "lsp"
