@@ -46,7 +46,9 @@ lualine.setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch" },
+    lualine_b = { 
+			{ "branch", icon = "" }
+		},
     lualine_c = { { "diagnostics", sources = { "nvim_lsp" } }, "filename" },
     lualine_x = { "filetype", lsp_progress },
     lualine_y = { clock },

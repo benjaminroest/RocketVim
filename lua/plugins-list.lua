@@ -94,6 +94,9 @@ return packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" }
 	}
 
+	-- Notifications
+	use "rcarriga/nvim-notify"
+
 	-- Dashboard
 	use {
 		"glepnir/dashboard-nvim",

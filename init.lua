@@ -4,6 +4,7 @@ require "colorscheme"
 require "keymappings"
 
 -- Plugins
+require "plugins.nvimnotify"
 require "plugins.nvimtree"
 require "plugins.nvimbufferline"
 require "plugins.lualine"
