@@ -1,6 +1,5 @@
 require "settings"
 require "plugins-list"
-require "colorscheme"
 require "keymappings"
 
 -- Plugins
@@ -18,3 +17,6 @@ require "plugins.whichkey"
 
 -- Lsp
 require "lsp"
+
+-- Colorscheme
+require "colorscheme"

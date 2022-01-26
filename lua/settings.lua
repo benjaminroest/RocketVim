@@ -7,6 +7,7 @@ vim.o.clipboard = "unnamedplus" -- Copy paste between vim and everything else
 vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore
 vim.o.conceallevel = 0 -- So that I can see `` in markdown files
 vim.o.pumheight = 12 -- Set the height of the popup window
+vim.o.updatetime = 300 -- faster completion
 
 vim.wo.relativenumber = true -- Set relative numbers
 vim.wo.number = true -- Set lines numbered
