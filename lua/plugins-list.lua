@@ -87,6 +87,7 @@ return packer.startup(function(use)
 
 	-- Color
 	use "christianchiarulli/nvcode-color-schemes.vim"
+	use "https://gitlab.com/__tpb/monokai-pro.nvim"
 
 	-- Git
 	use {

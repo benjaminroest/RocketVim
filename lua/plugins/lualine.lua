@@ -10,7 +10,7 @@ end
 local function lsp_progress()
   local messages = vim.lsp.util.get_progress_messages()
   if #messages == 0 then
-    return
+    return ""
   end
   local status = {}
   for _, msg in pairs(messages) do
@@ -37,7 +37,7 @@ vim.cmd("autocmd User LspProgressUpdate let &ro = &ro")
 
 lualine.setup({
   options = {
-    theme = "ayu_mirage",
+    theme = "monokaipro",
     icons_enabled = true,
     section_separators = { "", "" },
     component_separators = { "", "" },

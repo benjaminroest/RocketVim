@@ -13,7 +13,7 @@ vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
 	git = {unstaged = "", staged = "✓", unmerged = "", renamed = "➜", untracked = ""},
-	folder = {default = "", open = "", empty = "", empty_open = "", symlink = ""}
+	folder = {default = "", open = "", empty = "", empty_open = "", symlink = "", arrow_closed = "", arrow_open = ""}
 }
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
