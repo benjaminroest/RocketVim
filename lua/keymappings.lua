@@ -17,10 +17,8 @@ keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", o
 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", opts)
 keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>", opts)
-keymap("n", "ca", ":Lspsaga code_action<CR>", opts)
-keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
-keymap("n", "<C-p>", ":Lspsaga diagnostic_jump_prev<CR>", opts)
-keymap("n", "<C-n>", ":Lspsaga diagnostic_jump_next<CR>", opts)
+keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+
 -- Scroll down/up hover doc or scroll in definition preview
 keymap("n", "<C-f>", "<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(1)<CR>", opts)
 keymap("n", "<C-b>", "<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(-1)<CR>", opts)
