@@ -44,5 +44,19 @@ g.dashboard_custom_section = {
 
 g.dashboard_custom_footer = {""}
 
-vim.api.nvim_command("autocmd FileType dashboard set showtabline=0 laststatus=0")
-vim.api.nvim_command("autocmd WinLeave <buffer> set showtabline=2 laststatus=2")
+require("autocmds").define_augroups {
+	_dashboard = {
+		-- seems to be nobuflisted that makes my stuff disappear will do more testing
+		{
+			"FileType",
+			"dashboard",
+			"setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
+		},
+		{
+			"FileType",
+			"dashboard",
+			"set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2",
+		},
+		{ "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" },
+	},
+}

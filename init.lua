@@ -15,8 +15,6 @@ require "plugins.gitsigns"
 require "plugins.telescope"
 require "plugins.whichkey"
 
--- Lsp
 require "lsp"
-
--- Colorscheme
 require "colorscheme"
+require "autocmds"
