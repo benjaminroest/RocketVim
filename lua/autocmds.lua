@@ -7,6 +7,9 @@ M.load_augroups = {
 	_markdown = {
 		{ "FileType", "markdown", "setlocal wrap" },
 	},
+	_general_lsp = {
+		{ "FileType", "lspinfo,lsp-installer,null-ls-info", "nnoremap <silent> <buffer> q :close<CR>" },
+	},
 }
 
 --- Create autocommand groups based on the passed definitions
