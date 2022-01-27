@@ -3,7 +3,10 @@ local M = {}
 M.load_augroups = {
 	_general_settings = {
 		{ "FileType", "qf,help,man", "nnoremap <silent> <buffer> q :close<CR>" },
-	}
+	},
+	_markdown = {
+		{ "FileType", "markdown", "setlocal wrap" },
+	},
 }
 
 --- Create autocommand groups based on the passed definitions
