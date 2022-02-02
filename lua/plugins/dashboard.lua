@@ -42,7 +42,9 @@ g.dashboard_custom_section = {
   }
 }
 
-g.dashboard_custom_footer = {""}
+local num_plugins_loaded = #vim.fn.globpath(vim.fn.stdpath "data" .. "/site/pack/packer/start", "*", 0, 1)
+
+g.dashboard_custom_footer = { " Loaded " .. num_plugins_loaded .. " plugins"}
 
 require("autocmds").define_augroups {
 	_dashboard = {
