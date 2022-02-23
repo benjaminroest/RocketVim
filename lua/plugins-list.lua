@@ -41,6 +41,9 @@ packer.init {
 return packer.startup(function(use)
 	use "wbthomason/packer.nvim"
 
+  -- Faster Startup
+  use "lewis6991/impatient.nvim"
+
 	-- Tab bar
 	use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
 
@@ -55,10 +58,8 @@ return packer.startup(function(use)
 	use "folke/which-key.nvim"
 
 	-- Comments
-  use {
-		"tpope/vim-commentary",
-		cmd = "Commentary"
-	}
+  use "numToStr/Comment.nvim"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
 
 	-- Treesitter
 	use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}

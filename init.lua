@@ -1,3 +1,9 @@
+local present, impatient = pcall(require, "impatient")
+
+if present then
+   impatient.enable_profile()
+end
+
 require "settings"
 require "plugins-list"
 require "keymappings"
@@ -13,6 +19,7 @@ require "plugins.cmp"
 require "plugins.autopairs"
 require "plugins.gitsigns"
 require "plugins.telescope"
+require "plugins.comment"
 require "plugins.whichkey"
 
 require "lsp"
