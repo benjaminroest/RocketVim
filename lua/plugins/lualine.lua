@@ -37,7 +37,7 @@ vim.cmd("autocmd User LspProgressUpdate let &ro = &ro")
 
 lualine.setup({
   options = {
-    theme = "monokaipro",
+    theme = "tokyonight",
     icons_enabled = true,
     section_separators = { "", "" },
     component_separators = { "", "" },
@@ -47,7 +47,7 @@ lualine.setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { 
+    lualine_b = {
 			{ "branch", icon = "" }
 		},
     lualine_c = { { "diagnostics", sources = { "nvim_lsp" } }, "filename" },

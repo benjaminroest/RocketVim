@@ -87,7 +87,7 @@ return packer.startup(function(use)
 	}
 
 	-- Color
-	use "https://gitlab.com/__tpb/monokai-pro.nvim"
+  use 'folke/tokyonight.nvim'
 
 	-- Git
 	use {
