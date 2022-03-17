@@ -61,27 +61,16 @@ local opts_v = {
     noremap = true, -- use `noremap` when creating keymaps
     nowait = false -- use `nowait` when creating keymaps
 }
-
--- Explorer
-vim.api.nvim_set_keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
-
--- Buffer pick
-vim.api.nvim_set_keymap("n", "<Leader>b", ":BufferLinePick<CR>", {noremap = true, silent = true})
-
 -- Switch between h/cpp
 vim.api.nvim_set_keymap("n", "<Leader>o", ":ClangdSwitchSourceHeader<CR>", {noremap = true, silent = true})
 
--- Comments
-vim.api.nvim_set_keymap("n", "<leader>/", ":Commentary<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("v", "<leader>/", ":Commentary<CR>", {noremap = true, silent = true})
-
--- vim.api.nvim_set_keymap("v", "<leader>cf", ":lua vim.lsp.buf.range_formatting()<CR>", {noremap = true, silent = true})
-
 local mappings_n = {
-	["/"] = "Comment",
-	["b"] = "Buffer pick",
-	["e"] = "Explorer",
-	f = {
+  ["w"] = { "<cmd>w!<CR>", "Save" },
+  ["q"] = { "<cmd>q!<CR>", "Quit" },
+	["f"] = { "<cmd>Telescope find_files<cr>", "Find File"},
+	["b"] = { "<cmd>BufferLinePick<cr>", "Buffer pick" },
+	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+	s = {
 		name = "Search",
 		f = {"<cmd>Telescope find_files<cr>", "Find File"},
 		t = {"<cmd>Telescope grep_string<cr>", "Current word"},
@@ -124,7 +113,6 @@ local mappings_n = {
 }
 
 local mappings_v = {
-	["/"] = "Comment",
 	c = {
 		name = "Code",
 		f = {"<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format"}
