@@ -73,8 +73,8 @@ local mappings_n = {
 	s = {
 		name = "Search",
 		f = {"<cmd>Telescope find_files<cr>", "Find File"},
-		t = {"<cmd>Telescope grep_string<cr>", "Current word"},
-		T = {"<cmd>Telescope live_grep<cr>", "Text"},
+    t = {"<cmd>Telescope live_grep<cr>", "Text"},
+		T = {"<cmd>Telescope grep_string<cr>", "Current word"},
 		s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
 		S = {"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols"}
 	},

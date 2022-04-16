@@ -36,6 +36,10 @@ g.dashboard_custom_section = {
     description = {"  Recents                    "},
     command = "Telescope oldfiles"
   },
+  c = {
+    description = {"  Git status                 "},
+    command = "Telescope git_status"
+  },
   d = {
     description = {"  Edit Configuration         "},
     command = "e ~/.config/nvim/init.lua"
