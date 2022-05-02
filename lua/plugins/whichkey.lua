@@ -70,6 +70,7 @@ local mappings_n = {
 	["f"] = { "<cmd>Telescope find_files<cr>", "Find File"},
 	["b"] = { "<cmd>BufferLinePick<cr>", "Buffer pick" },
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+	["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
 	s = {
 		name = "Search",
 		f = {"<cmd>Telescope find_files<cr>", "Find File"},
@@ -113,6 +114,7 @@ local mappings_n = {
 }
 
 local mappings_v = {
+	["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
 	c = {
 		name = "Code",
 		f = {"<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format"}

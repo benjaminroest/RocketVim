@@ -11,6 +11,7 @@ vim.o.updatetime = 300 -- faster completion
 vim.o.expandtab = true -- convert tabs to spaces
 vim.o.shiftwidth = 2 -- the number of spaces inserted for each identation
 vim.o.tabstop = 2	-- insert two spaces for a tab
+vim.o.laststatus = 3 -- global statusbar
 
 vim.wo.relativenumber = true -- Set relative numbers
 vim.wo.number = true -- Set lines numbered
