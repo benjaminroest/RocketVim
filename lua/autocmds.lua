@@ -35,4 +35,6 @@ end
 
 M.define_augroups(M.load_augroups)
 
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+
 return M
