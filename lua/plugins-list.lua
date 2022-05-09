@@ -69,6 +69,7 @@ return packer.startup(function(use)
 	-- Lsp
 	use "neovim/nvim-lspconfig"
 	use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
 	-- Autocompletion
   use "hrsh7th/nvim-cmp" -- The completion plugin
