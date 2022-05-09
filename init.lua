@@ -11,7 +11,7 @@ require "keymappings"
 -- Plugins
 require "plugins.nvimnotify"
 require "plugins.nvimtree"
-require "plugins.nvimbufferline"
+require "plugins.bufferline"
 require "plugins.lualine"
 require "plugins.indentblankline"
 require "plugins.dashboard"

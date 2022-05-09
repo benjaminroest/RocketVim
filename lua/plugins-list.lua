@@ -45,7 +45,7 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
 
 	-- Tab bar
-	use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
+	use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}
 
 	-- Statusline
 	use "hoob3rt/lualine.nvim"
@@ -76,6 +76,7 @@ return packer.startup(function(use)
 	use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-nvim-lsp-signature-help" -- function arguments completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
  -- snippets
