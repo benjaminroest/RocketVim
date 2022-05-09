@@ -3,12 +3,12 @@ return {
 		config = {
 			vetur = {
 				experimental = {
-					templateInterpolationService = true
+					templateInterpolationService = true,
 				},
-        validation = {
-          interpolation = false
-        }
-			}
-		}
-	}
+				validation = {
+					interpolation = false,
+				},
+			},
+		},
+	},
 }

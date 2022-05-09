@@ -10,7 +10,7 @@ vim.o.pumheight = 12 -- Set the height of the popup window
 vim.o.updatetime = 300 -- faster completion
 vim.o.expandtab = true -- convert tabs to spaces
 vim.o.shiftwidth = 2 -- the number of spaces inserted for each identation
-vim.o.tabstop = 2	-- insert two spaces for a tab
+vim.o.tabstop = 2 -- insert two spaces for a tab
 vim.o.laststatus = 3 -- global statusbar
 
 vim.wo.relativenumber = true -- Set relative numbers
@@ -22,26 +22,26 @@ vim.wo.colorcolumn = "80"
 vim.wo.cursorline = true
 
 local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"gzip",
+	"zip",
+	"zipPlugin",
+	"tar",
+	"tarPlugin",
+	"getscript",
+	"getscriptPlugin",
+	"vimball",
+	"vimballPlugin",
+	"2html_plugin",
+	"logipat",
+	"rrhelper",
+	"spellfile_plugin",
+	"matchit",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
+	vim.g["loaded_" .. plugin] = 1
 end
