@@ -1,3 +1,5 @@
+local theme = require("theme")
+
 vim.o.mouse = "a" -- Enable your mouse
 vim.o.incsearch = true --Show search matches while typing
 vim.o.splitbelow = true -- Horizontal splits will automatically be below
@@ -20,6 +22,8 @@ vim.wo.wrap = false -- Display long lines as one line
 vim.wo.signcolumn = "yes"
 vim.wo.colorcolumn = "80"
 vim.wo.cursorline = true
+
+theme.init()
 
 local disabled_built_ins = {
 	"netrw",

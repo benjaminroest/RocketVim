@@ -90,7 +90,7 @@ return packer.startup(function(use)
 	})
 
 	-- Color
-	use("folke/tokyonight.nvim")
+	use("rmehri01/onenord.nvim")
 
 	-- Git
 	use({

@@ -15,35 +15,33 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
---   פּ ﯟ   some other good icons
-local kind_icons = {
-	Text = "",
-	Method = "m",
+local icons = {
+	Text = "",
+	Method = "",
 	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
+	Constructor = "⌘",
+	Field = "ﰠ",
+	Variable = "",
+	Class = "ﴯ",
 	Interface = "",
-	Module = "",
-	Property = "",
-	Unit = "",
+	Module = "",
+	Property = "ﰠ",
+	Unit = "塞",
 	Value = "",
 	Enum = "",
-	Keyword = "",
-	Snippet = "",
+	Keyword = "廓",
+	Snippet = "",
 	Color = "",
 	File = "",
-	Reference = "",
-	Folder = "",
+	Reference = "",
+	Folder = "",
 	EnumMember = "",
-	Constant = "",
-	Struct = "",
+	Constant = "",
+	Struct = "פּ",
 	Event = "",
 	Operator = "",
-	TypeParameter = "",
+	TypeParameter = "",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
 local function border(hl_name)
 	return {
@@ -103,18 +101,14 @@ cmp.setup({
 			"s",
 		}),
 	},
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+		keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+		keyword_length = 1,
+	},
 	formatting = {
-		-- fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			-- Kind icons
-			-- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			--   vim_item.menu = ({
-			-- lua_lsp = "[LSP]",
-			--     luasnip = "[Snippet]",
-			--     buffer = "[Buffer]",
-			--     path = "[Path]",
-			--   })[entry.source.name]
+			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			return vim_item
 		end,
 	},
@@ -128,14 +122,14 @@ cmp.setup({
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
-	window = {
-		completion = {
-			border = border("CmpBorder"),
-		},
-		documentation = {
-			border = border("CmpDocBorder"),
-		},
-	},
+	-- window = {
+	-- 	completion = {
+	-- 		border = border("CmpBorder"),
+	-- 	},
+	-- 	documentation = {
+	-- 		border = border("CmpDocBorder"),
+	-- 	},
+	-- },
 	experimental = {
 		ghost_text = false,
 		native_menu = false,
