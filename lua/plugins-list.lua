@@ -57,6 +57,7 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs"
   use "folke/which-key.nvim"
   use "lukas-reineke/indent-blankline.nvim"
+  use "andymass/vim-matchup"
 
   -- Comments
   use "numToStr/Comment.nvim"
