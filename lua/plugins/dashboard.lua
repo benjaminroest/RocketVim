@@ -73,7 +73,7 @@ require("autocmds").define_autocmds {
       group = "_dashboard_settings",
       pattern = "dashboard",
       desc = "Quit with q",
-      command = "nnoremap <silent> <buffer> q :close<CR>",
+      command = "nnoremap <silent> <buffer> q :q<CR>",
     }
   },
 }
