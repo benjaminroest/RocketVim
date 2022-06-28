@@ -22,6 +22,7 @@ require "plugins.gitsigns"
 require "plugins.telescope"
 require "plugins.comment"
 require "plugins.whichkey"
+require "plugins.tabout"
 
 require "lsp"
 require "colorscheme"

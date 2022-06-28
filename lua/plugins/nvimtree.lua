@@ -9,20 +9,20 @@
 
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = { unstaged = "", staged = "✓", unmerged = "", renamed = "➜", untracked = "" },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-    arrow_closed = "",
-    arrow_open = "",
-  },
-}
+-- vim.g.nvim_tree_icons = {
+--   default = "",
+--   symlink = "",
+--   git = { unstaged = "", staged = "✓", unmerged = "", renamed = "➜", untracked = "" },
+--   folder = {
+--     default = "",
+--     open = "",
+--     empty = "",
+--     empty_open = "",
+--     symlink = "",
+--     arrow_closed = "",
+--     arrow_open = "",
+--   },
+-- }
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
@@ -56,6 +56,24 @@ nvim_tree.setup {
       warning = "",
       error = "",
     },
+  },
+  renderer = {
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = { unstaged = "", staged = "✓", unmerged = "", renamed = "➜", untracked = "" },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          arrow_closed = "",
+          arrow_open = "",
+        },
+      }
+    }
   },
   update_focused_file = {
     enable = true,
