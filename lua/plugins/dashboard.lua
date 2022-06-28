@@ -50,19 +50,31 @@ local num_plugins_loaded = #vim.fn.globpath(vim.fn.stdpath "data" .. "/site/pack
 
 g.dashboard_custom_footer = { " Loaded " .. num_plugins_loaded .. " plugins" }
 
-require("autocmds").define_augroups {
-  _dashboard = {
-    -- seems to be nobuflisted that makes my stuff disappear will do more testing
+require("autocmds").define_autocmds {
+  {
+    "FileType",
     {
-      "FileType",
-      "dashboard",
-      "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
-    },
+      group = "_dashboard_settings",
+      pattern = "dashboard",
+      command = "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
+    }
+  },
+  {
+    "FileType",
     {
-      "FileType",
-      "dashboard",
-      "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2",
-    },
-    { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" },
+      group = "_dashboard_settings",
+      pattern = "dashboard",
+      command = "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2",
+    }
+  },
+  {
+    "FileType",
+    {
+      group = "_dashboard_settings",
+      pattern = "dashboard",
+      desc = "Quit with q",
+      command = "nnoremap <silent> <buffer> q :close<CR>",
+    }
   },
 }
+

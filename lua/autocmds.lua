@@ -48,7 +48,6 @@ M.definitions = {
       command = "nnoremap <silent> <buffer> q :close<CR>",
     }
   },
-  { "FileType", "lspinfo,lsp-installer,null-ls-info", "nnoremap <silent> <buffer> q :close<CR>" },
 }
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
