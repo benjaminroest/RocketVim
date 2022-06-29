@@ -8,7 +8,7 @@ M.definitions = {
       pattern = { "qf", "help", "man" },
       desc = "Quit with q",
       command = "nnoremap <silent> <buffer> q :close<CR>",
-    }
+    },
   },
   {
     "TextYankPost",
@@ -46,12 +46,11 @@ M.definitions = {
       pattern = { "lspinfo", "lsp-installer", "null-ls-info" },
       desc = "Quit with q",
       command = "nnoremap <silent> <buffer> q :close<CR>",
-    }
+    },
   },
 }
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-vim.cmd [[autocmd BufEnter * if line2byte('.') == -1 && len(tabpagebuflist()) == 1 && empty(bufname()) | Dashboard | endif ]]
 
 function M.define_autocmds(definitions)
   for _, entry in ipairs(definitions) do

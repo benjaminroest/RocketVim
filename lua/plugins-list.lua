@@ -104,18 +104,23 @@ return packer.startup(function(use)
   use "rcarriga/nvim-notify"
 
   -- Dashboard
+  -- use {
+  --   "glepnir/dashboard-nvim",
+  --   opt = true,
+  --   cmd = {
+  --     "Dashboard",
+  --     "DashboardChangeColorscheme",
+  --     "DashboardFindFile",
+  --     "DashboardFindHistory",
+  --     "DashboardFindWord",
+  --     "DashboardJumpMarks",
+  --     "DashboardNewfile",
+  --   },
+  -- }
+
   use {
-    "glepnir/dashboard-nvim",
-    opt = true,
-    cmd = {
-      "Dashboard",
-      "DashboardChangeColorscheme",
-      "DashboardFindFile",
-      "DashboardFindHistory",
-      "DashboardFindWord",
-      "DashboardJumpMarks",
-      "DashboardNewfile",
-    },
+    "goolord/alpha-nvim",
+    requires = { "kyazdani42/nvim-web-devicons" },
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

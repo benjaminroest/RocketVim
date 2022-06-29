@@ -13,7 +13,7 @@ indentblankline.setup {
     "TelescopePrompt",
     "TelescopeResults",
     "lsp-installer",
-    "dashboard",
+    "alpha",
     "",
   },
   buftype_exclude = { "terminal" },

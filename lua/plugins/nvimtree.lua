@@ -42,7 +42,6 @@ nvim_tree.setup {
   open_on_setup = false,
   ignore_ft_on_setup = {
     "startify",
-    "dashboard",
     "alpha",
   },
   open_on_tab = false,
@@ -72,8 +71,8 @@ nvim_tree.setup {
           arrow_closed = "",
           arrow_open = "",
         },
-      }
-    }
+      },
+    },
   },
   update_focused_file = {
     enable = true,

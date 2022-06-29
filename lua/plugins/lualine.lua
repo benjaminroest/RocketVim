@@ -41,7 +41,7 @@ lualine.setup {
     icons_enabled = true,
     section_separators = { "", "" },
     component_separators = { "", "" },
-    disabled_filetypes = { "dashboard" },
+    disabled_filetypes = { "alpha" },
     -- section_separators = {"", ""},
     -- component_separators = {"", ""}
   },
