@@ -22,6 +22,10 @@ vim.wo.wrap = false -- Display long lines as one line
 vim.wo.signcolumn = "yes"
 vim.wo.colorcolumn = "80"
 vim.wo.cursorline = true
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = -1
+vim.o.foldenable = true
 
 theme.init()
 

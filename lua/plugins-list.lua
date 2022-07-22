@@ -103,20 +103,11 @@ return packer.startup(function(use)
   -- Notifications
   use "rcarriga/nvim-notify"
 
-  -- Dashboard
-  -- use {
-  --   "glepnir/dashboard-nvim",
-  --   opt = true,
-  --   cmd = {
-  --     "Dashboard",
-  --     "DashboardChangeColorscheme",
-  --     "DashboardFindFile",
-  --     "DashboardFindHistory",
-  --     "DashboardFindWord",
-  --     "DashboardJumpMarks",
-  --     "DashboardNewfile",
-  --   },
-  -- }
+  -- Folding
+  use {
+    "kevinhwang91/nvim-ufo",
+    requires = "kevinhwang91/promise-async",
+  }
 
   use {
     "goolord/alpha-nvim",

@@ -24,6 +24,7 @@ require "plugins.telescope"
 require "plugins.comment"
 require "plugins.whichkey"
 require "plugins.tabout"
+require "plugins.ufo"
 
 require "lsp"
 require "colorscheme"
