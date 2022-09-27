@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 -- Buffers
 keymap("n", "<TAB>", ":BufferLineCycleNext<cr>", opts)
 keymap("n", "<S-TAB>", ":BufferLineCyclePrev<cr>", opts)
-keymap("n", "<S-x>", "<cmd>bd<cr>", opts)
+keymap("n", "<S-x>", "<cmd>Bdelete<cr>", opts)
 
 -- Window movement
 keymap("n", "<C-h>", "<C-w>h", { silent = true })

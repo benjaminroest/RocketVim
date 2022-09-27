@@ -66,11 +66,11 @@ vim.api.nvim_set_keymap("n", "<Leader>o", ":ClangdSwitchSourceHeader<CR>", { nor
 
 local mappings_n = {
   ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
+  ["q"] = { "<cmd>lua require('core.utils').smart_quit()<CR>", "Quit" },
   ["f"] = { "<cmd>Telescope find_files<cr>", "Find File" },
   ["b"] = { "<cmd>BufferLinePick<cr>", "Buffer pick" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
+  ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
   s = {
     name = "Search",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
@@ -116,11 +116,12 @@ local mappings_n = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Git Diff",
     },
+    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
   },
 }
 
 local mappings_v = {
-  ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+  ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment" },
   c = {
     name = "Code",
     f = { "<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format" },

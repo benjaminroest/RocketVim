@@ -43,6 +43,36 @@ local icons = {
   TypeParameter = "",
 }
 
+local function completion_menu_next()
+  return cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+    elseif require("luasnip").expand_or_jumpable() then
+      vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+    else
+      fallback()
+    end
+  end, {
+    "i",
+    "s",
+  })
+end
+
+local function completion_menu_prev()
+  return cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    elseif require("luasnip").jumpable(-1) then
+      vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+    else
+      fallback()
+    end
+  end, {
+    "i",
+    "s",
+  })
+end
+
 local function border(hl_name)
   return {
     { "╭", hl_name },
@@ -73,33 +103,11 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm { select = true },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif require("luasnip").expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif require("luasnip").jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
+    ["<Tab>"] = completion_menu_next(),
+    ["<S-Tab>"] = completion_menu_prev(),
+    ["<Down>"] = completion_menu_next(),
+    ["<Up>"] = completion_menu_prev(),
   },
   completion = {
     completeopt = "menu,menuone,noinsert",
@@ -131,7 +139,11 @@ cmp.setup {
   -- 	},
   -- },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
     native_menu = false,
   },
 }
+
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

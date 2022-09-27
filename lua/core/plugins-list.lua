@@ -54,11 +54,14 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-tree.lua"
 
   -- Misc
+  use "j-hui/fidget.nvim"
   use "windwp/nvim-autopairs"
   use "folke/which-key.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use "andymass/vim-matchup"
   use "abecodes/tabout.nvim"
+  use "Pocco81/true-zen.nvim"
+  use "gbprod/cutlass.nvim"
 
   -- Comments
   use "numToStr/Comment.nvim"
@@ -72,6 +75,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
   -- Autocompletion
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -92,7 +96,7 @@ return packer.startup(function(use)
   }
 
   -- Color
-  use "rmehri01/onenord.nvim"
+  use { "Everblush/everblush.nvim", as = "everblush" }
 
   -- Git
   use {
@@ -103,16 +107,17 @@ return packer.startup(function(use)
   -- Notifications
   use "rcarriga/nvim-notify"
 
-  -- Folding
-  use {
-    "kevinhwang91/nvim-ufo",
-    requires = "kevinhwang91/promise-async",
-  }
+  -- Delete buffers
+  use "famiu/bufdelete.nvim"
 
   use {
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
   }
+
+  -- Terminal
+  use "akinsho/toggleterm.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
