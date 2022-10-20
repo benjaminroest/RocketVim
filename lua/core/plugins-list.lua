@@ -73,7 +73,8 @@ return packer.startup(function(use)
 
   -- Lsp
   use "neovim/nvim-lspconfig"
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
@@ -117,6 +118,9 @@ return packer.startup(function(use)
 
   -- Terminal
   use "akinsho/toggleterm.nvim"
+
+  -- Add support for .editorconfig
+  use "gpanders/editorconfig.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

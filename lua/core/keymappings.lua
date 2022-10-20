@@ -19,10 +19,6 @@ keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<cr>", op
 keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_definitions()<cr>", opts)
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 
--- Scroll down/up hover doc or scroll in definition preview
-keymap("n", "<C-f>", "<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(1)<cr>", opts)
-keymap("n", "<C-b>", "<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(-1)<cr>", opts)
-
 -- Keeps the cursor on the same line while searching
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)

@@ -21,6 +21,8 @@ M.init = function()
         TelescopePromptCounter = { fg = colors.color4 },
         TelescopeSelection = { bg = colors.cursorline, fg = colors.foreground },
         TelescopeMatching = { bg = colors.cursorline, fg = colors.color4 },
+
+        StatusLineNC = { bg = "#141b1f", fg = "#141b1f" },
       },
     }
   end

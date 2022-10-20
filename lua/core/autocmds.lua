@@ -50,7 +50,7 @@ M.definitions = {
   },
 }
 
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 function M.define_autocmds(definitions)
   for _, entry in ipairs(definitions) do

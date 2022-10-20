@@ -3,6 +3,6 @@ if not status_ok then
   return
 end
 
-require "core.lsp.lsp-installer"
+require "core.lsp.mason"
 require("core.lsp.handlers").setup()
 require "core.lsp.null-ls"
