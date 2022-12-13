@@ -14,6 +14,7 @@ indentblankline.setup {
     "TelescopeResults",
     "lsp-installer",
     "alpha",
+    "mason",
     "",
   },
   buftype_exclude = { "terminal" },

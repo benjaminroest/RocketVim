@@ -81,7 +81,7 @@ local mappings_n = {
   },
   c = {
     name = "Code",
-    f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
+    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", "Format" },
     a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Actions" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
     j = {

@@ -62,6 +62,8 @@ return packer.startup(function(use)
   use "abecodes/tabout.nvim"
   use "Pocco81/true-zen.nvim"
   use "gbprod/cutlass.nvim"
+  use "RRethy/vim-illuminate"
+  use "ggandor/leap.nvim"
 
   -- Comments
   use "numToStr/Comment.nvim"
@@ -69,6 +71,7 @@ return packer.startup(function(use)
 
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+  use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
 
   -- Lsp
@@ -76,7 +79,6 @@ return packer.startup(function(use)
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
   -- Autocompletion
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -97,7 +99,7 @@ return packer.startup(function(use)
   }
 
   -- Color
-  use { "Everblush/everblush.nvim", as = "everblush" }
+  use "navarasu/onedark.nvim"
 
   -- Git
   use {

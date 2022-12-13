@@ -31,6 +31,15 @@ M.definitions = {
     },
   },
   {
+    "BufWritePre",
+    {
+      group = "_general_settings",
+      pattern = "*",
+      desc = "format on save",
+      command = "lua vim.lsp.buf.format()",
+    },
+  },
+  {
     "FileType",
     {
       group = "_filetype_settings",
@@ -49,8 +58,6 @@ M.definitions = {
     },
   },
 }
-
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 function M.define_autocmds(definitions)
   for _, entry in ipairs(definitions) do

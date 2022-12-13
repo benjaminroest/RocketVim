@@ -3,4 +3,8 @@ if not status_ok then
   return
 end
 
+cutlass.setup {
+  cut_key = "m",
+}
+
 cutlass.setup()
