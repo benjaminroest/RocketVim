@@ -1,4 +1,4 @@
-local theme = require "core.theme"
+local theme = require "core.config.theme"
 
 vim.o.mouse = "a" -- Enable your mouse
 vim.o.incsearch = true --Show search matches while typing

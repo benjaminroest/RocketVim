@@ -30,15 +30,15 @@ M.definitions = {
       command = "normal! zz",
     },
   },
-  {
-    "BufWritePre",
-    {
-      group = "_general_settings",
-      pattern = "*",
-      desc = "format on save",
-      command = "lua vim.lsp.buf.format()",
-    },
-  },
+  -- {
+  --   "BufWritePre",
+  --   {
+  --     group = "_general_settings",
+  --     pattern = "*",
+  --     desc = "format on save",
+  --     command = "lua vim.lsp.buf.format()",
+  --   },
+  -- },
   {
     "FileType",
     {

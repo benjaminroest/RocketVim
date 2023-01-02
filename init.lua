@@ -4,10 +4,10 @@ if present then
   impatient.enable_profile()
 end
 
-require "core.settings"
-require "core.plugins-list"
-require "core.keymappings"
+require "core.config.settings"
+require "core.config.plugins-list"
+require "core.config.keymappings"
 require "core.plugins"
 require "core.lsp"
-require "core.colorscheme"
-require "core.autocmds"
+require "core.config.colorscheme"
+require "core.config.autocmds"

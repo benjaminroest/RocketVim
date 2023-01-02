@@ -9,7 +9,7 @@ end
 
 lualine.setup {
   options = {
-    theme = "onedark",
+    theme = "monokaipro",
     icons_enabled = true,
     section_separators = { "", "" },
     component_separators = { "", "" },

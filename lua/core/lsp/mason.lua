@@ -67,6 +67,11 @@ require("mason-lspconfig").setup_handlers {
       opts = vim.tbl_deep_extend("force", pyright_opts, opts)
     end
 
+    if server_name == "tsserver" then
+      local tsserver_opts = require "core.lsp.settings.tsserver"
+      opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+    end
+
     lspconfig[server_name].setup(opts)
   end,
 }

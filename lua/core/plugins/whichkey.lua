@@ -42,7 +42,6 @@ whichkey.setup {
 
 -- Set leader
 vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
-vim.g.mapleader = " "
 
 local opts_n = {
   mode = "n", -- NORMAL mode

@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 indentblankline.setup {
-  char = "▏",
+  char = "┊",
   filetype_exclude = {
     "help",
     "terminal",

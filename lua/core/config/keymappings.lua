@@ -1,6 +1,11 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+
+
+-- Set leader
+vim.g.mapleader = " "
+
 -- Buffers
 keymap("n", "<TAB>", ":BufferLineCycleNext<cr>", opts)
 keymap("n", "<S-TAB>", ":BufferLineCyclePrev<cr>", opts)

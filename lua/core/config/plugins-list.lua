@@ -100,6 +100,10 @@ return packer.startup(function(use)
 
   -- Color
   use "navarasu/onedark.nvim"
+  use {
+    "https://gitlab.com/__tpb/monokai-pro.nvim",
+    as = "monokai-pro.nvim",
+  }
 
   -- Git
   use {
