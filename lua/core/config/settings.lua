@@ -1,5 +1,3 @@
-local theme = require "core.config.theme"
-
 vim.o.mouse = "a" -- Enable your mouse
 vim.o.incsearch = true --Show search matches while typing
 vim.o.splitbelow = true -- Horizontal splits will automatically be below
@@ -27,7 +25,8 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = -1
 vim.o.foldenable = true
 
-theme.init()
+-- Set leader
+vim.g.mapleader = " "
 
 local disabled_built_ins = {
   "2html_plugin",

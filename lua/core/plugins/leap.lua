@@ -1,6 +1,10 @@
-local status_ok, leap = pcall(require, "leap")
-if not status_ok then
-  return
+local M = {
+  "ggandor/leap.nvim",
+  event = "BufRead",
+}
+
+M.config = function()
+  require("leap").add_default_mappings(true)
 end
 
-leap.add_default_mappings(true)
+return M

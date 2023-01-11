@@ -53,22 +53,22 @@ require("mason-lspconfig").setup_handlers {
     require("lspconfig")[server_name].setup {}
 
     if server_name == "jsonls" then
-      local jsonls_opts = require "core.lsp.settings.jsonls"
+      local jsonls_opts = require "core.plugins.lsp.settings.jsonls"
       opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
     end
 
     if server_name == "sumneko_lua" then
-      local sumneko_opts = require "core.lsp.settings.sumneko_lua"
+      local sumneko_opts = require "core.plugins.lsp.settings.sumneko_lua"
       opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
     end
 
     if server_name == "pyright" then
-      local pyright_opts = require "core.lsp.settings.pyright"
+      local pyright_opts = require "core.plugins.lsp.settings.pyright"
       opts = vim.tbl_deep_extend("force", pyright_opts, opts)
     end
 
     if server_name == "tsserver" then
-      local tsserver_opts = require "core.lsp.settings.tsserver"
+      local tsserver_opts = require "core.plugins.lsp.settings.tsserver"
       opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
     end
 

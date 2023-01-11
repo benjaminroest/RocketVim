@@ -1,10 +1,14 @@
-local status_ok, fidget = pcall(require, "fidget")
-if not status_ok then
-  return
+local M = {
+  "j-hui/fidget.nvim",
+  event = "BufReadPre",
+}
+
+M.config = function()
+  require("fidget").setup {
+    text = {
+      spinner = "dots",
+    },
+  }
 end
 
-fidget.setup {
-  text = {
-    spinner = "dots",
-  },
-}
+return M

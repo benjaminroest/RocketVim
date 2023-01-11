@@ -1,19 +1,10 @@
--- require "core.plugins.nvimnotify"
-require "core.plugins.nvimtree"
-require "core.plugins.bufferline"
-require "core.plugins.lualine"
-require "core.plugins.indentblankline"
-require "core.plugins.alpha"
-require "core.plugins.treesitter"
-require "core.plugins.cmp"
-require "core.plugins.autopairs"
-require "core.plugins.gitsigns"
-require "core.plugins.telescope"
-require "core.plugins.comment"
-require "core.plugins.whichkey"
-require "core.plugins.tabout"
-require "core.plugins.fidget"
-require "core.plugins.cutlass"
-require "core.plugins.illuminate"
-require "core.plugins.leap"
-require "core.plugins.toggleterm"
+return {
+  {
+    "famiu/bufdelete.nvim",
+    cmd = { "Bdelete" },
+  },
+  {
+    "gpanders/editorconfig.nvim",
+    event = "VeryLazy",
+  },
+}
