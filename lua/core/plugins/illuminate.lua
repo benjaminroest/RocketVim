@@ -1,11 +1,7 @@
-local M = {
+return {
   "RRethy/vim-illuminate",
   event = "BufReadPre",
-}
-
-M.config = function()
-  require("illuminate").configure {
-
+  opts = {
     providers = {
       "lsp",
       "treesitter",
@@ -18,7 +14,7 @@ M.config = function()
       "fugitive",
       "TelescopePrompt",
       "alpha",
-      "NvimTree",
+      "neo-tree"
     },
     filetypes_allowlist = {},
     modes_denylist = {},
@@ -28,7 +24,8 @@ M.config = function()
     under_cursor = true,
     large_file_cutoff = nil,
     large_file_overrides = nil,
-  }
-end
-
-return M
+  },
+  config = function(_, opts)
+    require("illuminate").configure(opts)
+  end
+}

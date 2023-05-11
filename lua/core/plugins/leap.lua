@@ -1,10 +1,7 @@
-local M = {
+return {
   "ggandor/leap.nvim",
   event = "BufRead",
+  config = function()
+    require("leap").add_default_mappings(true)
+  end
 }
-
-M.config = function()
-  require("leap").add_default_mappings(true)
-end
-
-return M

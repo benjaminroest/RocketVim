@@ -1,14 +1,14 @@
-local M = {
+return  {
   "numToStr/Comment.nvim",
   event = "VeryLazy",
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
-}
-
-M.config = function()
-  local comment = require "Comment"
-  comment.setup {
+  keys = {
+      { "<C-/>", "<Plug>(comment_toggle_linewise_current)j",  desc = "Comment" },
+      { "<C-/>", "<Plug>(comment_toggle_linewise_visual)", mode = "v", desc = "Comment" },
+  },
+  opts = {
     pre_hook = function(ctx)
       -- Only calculate commentstring for tsx filetypes
       if vim.bo.filetype == "typescriptreact" then
@@ -31,7 +31,8 @@ M.config = function()
         }
       end
     end,
-  }
-end
-
-return M
+  },
+  config = function (_, opts)
+    require('Comment').setup(opts)
+  end
+}

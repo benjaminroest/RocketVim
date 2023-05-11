@@ -1,31 +1,30 @@
-local M = {
+return {
   "windwp/nvim-autopairs",
-}
-
-M.config = function()
-  local npairs = require "nvim-autopairs"
-  local Rule = require "nvim-autopairs.rule"
-
-  npairs.setup {
+  opts = {
     check_ts = true,
     ts_config = {
       lua = { "string" }, -- it will not add pair on that treesitter node
       javascript = { "template_string" },
       java = false, -- don"t check treesitter on java
     },
-  }
+  },
+  config = function(_, opts)
+    local npairs = require "nvim-autopairs"
+    local Rule = require "nvim-autopairs.rule"
 
-  require("nvim-treesitter.configs").setup {
-    autopairs = { enable = true },
-  }
+    npairs.setup(opts)
 
-  local ts_conds = require "nvim-autopairs.ts-conds"
+    require("nvim-treesitter.configs").setup {
+      autopairs = { enable = true },
+    }
 
-  -- press % => %% is only inside comment or string
-  npairs.add_rules {
-    Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node { "string", "comment" }),
-    Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node { "function" }),
-  }
-end
+    local ts_conds = require "nvim-autopairs.ts-conds"
 
-return M
+    -- press % => %% is only inside comment or string
+    npairs.add_rules {
+      Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node { "string", "comment" }),
+      Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node { "function" }),
+      Rule("{{", "  }", "vue"):set_end_pair_length(2):with_pair(ts_conds.is_ts_node "text"),
+    }
+  end,
+}

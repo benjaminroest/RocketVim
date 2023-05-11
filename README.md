@@ -13,11 +13,5 @@
 ```
 
 # Install
-**Minimum version**: `nvim`: `0.5`
+**Minimum version**: `nvim`: `0.9`
 1. Copy all files from this repo to ~/.config/nvim
-2. Install (Packer)[https://github.com/wbthomason/packer.nvim#quickstart]
-When using nvim for the first time, run: `:PackerInstall`
-
-# Lsp
-Neovim comes bundled with a language client but not a language server. To install a supported language server:
-``` :LspInstall <your_language_server> ```

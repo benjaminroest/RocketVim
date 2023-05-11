@@ -6,7 +6,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("core.plugins", {
-  defaults = { lazy = true, version = "*" },
+  defaults = { lazy = true },
   install = { colorscheme = { "nightfox" } },
   performance = {
     rtp = {

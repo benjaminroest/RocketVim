@@ -1,9 +1,34 @@
 local M = {
   "folke/which-key.nvim",
   event = "VeryLazy",
+  opts = {
+    plugins = { spelling = true },
+    defaults = {
+      mode = { "n", "v" },
+      ["g"] = { name = "+goto" },
+      ["gz"] = { name = "+surround" },
+      ["]"] = { name = "+next" },
+      ["["] = { name = "+prev" },
+      ["<leader><tab>"] = { name = "+tabs" },
+      ["<leader>b"] = { name = "+buffer" },
+      ["<leader>c"] = { name = "+code" },
+      ["<leader>f"] = { name = "+file/find" },
+      ["<leader>g"] = { name = "+git" },
+      ["<leader>gh"] = { name = "+hunks" },
+      ["<leader>r"] = { name = "+replace" },
+      ["<leader>s"] = { name = "+search" },
+      ["<leader>u"] = { name = "+ui" },
+      ["<leader>x"] = { name = "+diagnostics/quickfix" },
+    },
+  },
+  config = function(_, opts)
+    local wk = require "which-key"
+    wk.setup(opts)
+    wk.register(opts.defaults)
+  end,
 }
 
-M.config = function()
+M.dsgsg = function()
   require("which-key").setup {
     plugins = {
       marks = true, -- shows a list of your marks on " and `
@@ -61,16 +86,14 @@ M.config = function()
     noremap = true, -- use `noremap` when creating keymaps
     nowait = false, -- use `nowait` when creating keymaps
   }
-  -- Switch between h/cpp
-  vim.api.nvim_set_keymap("n", "<Leader>o", ":ClangdSwitchSourceHeader<CR>", { noremap = true, silent = true })
 
   local mappings_n = {
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>lua require('core.utils').smart_quit()<CR>", "Quit" },
-    ["f"] = { "<cmd>Telescope find_files<cr>", "Find File" },
-    ["b"] = { "<cmd>BufferLinePick<cr>", "Buffer pick" },
+    -- ["f"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+    -- ["b"] = { "<cmd>BufferLinePick<cr>", "Buffer pick" },
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
+    -- ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
     s = {
       name = "Search",
       f = { "<cmd>Telescope find_files<cr>", "Find File" },
@@ -117,7 +140,6 @@ M.config = function()
         "<cmd>Gitsigns diffthis HEAD<cr>",
         "Git Diff",
       },
-      g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     },
     r = {
       name = "Replace",
