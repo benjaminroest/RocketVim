@@ -21,8 +21,6 @@ return {
         end
       end
 
---      opts["stage"] = "fade"
-
       return nvim_notify(msg, level, opts)
     end
   end

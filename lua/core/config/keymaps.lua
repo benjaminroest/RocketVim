@@ -21,6 +21,10 @@ map("n", "<A-Down>", "<cmd>resize -2<cr>")
 map("n", "<A-Left>", "<cmd>vertical resize -2<cr>")
 map("n", "<A-Right>", "<cmd>vertical resize +2<cr>")
 
+map("i", "<C-BS>", "<Esc>cvb")
+map("n", "H", "^")
+map("n", "L", "$")
+
 -- quit
 map("n", "<leader>q", "<cmd>lua require('core.utils').smart_quit()<CR>", { desc = "Quit" })
 
