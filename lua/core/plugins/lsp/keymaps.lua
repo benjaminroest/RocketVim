@@ -8,10 +8,8 @@ function M.diagnostic_goto(next, severity)
   end
 end
 
----@type PluginLspKeys
 M._keys = nil
 
----@return (LazyKeys|{has?:string})[]
 function M.get()
   local format = function()
     require("lazyvim.plugins.lsp.format").format { force = true }
@@ -19,16 +17,7 @@ function M.get()
   return {
     { "<leader>cd", vim.diagnostic.open_float, desc = "Line Diagnostics" },
     { "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
-    {
-      "gd",
-      "<cmd>Telescope lsp_definitions<cr>",
-      desc = "Goto Definition",
-      has = "definition",
-    },
-    { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
     { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-    { "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
-    { "gy", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto T[y]pe Definition" },
     { "K", vim.lsp.buf.hover, desc = "Hover" },
     {
       "gK",
@@ -75,7 +64,17 @@ function M.get()
     },
     {
       "<leader>cr",
-      vim.lsp.buf.rename,
+      function()
+        vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
+          callback = function()
+            local key = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
+            vim.api.nvim_feedkeys(key, "c", false)
+            vim.api.nvim_feedkeys("0", "n", false)
+            return true
+          end,
+        })
+        vim.lsp.buf.rename()
+      end,
       desc = "Rename",
       has = "rename",
     },

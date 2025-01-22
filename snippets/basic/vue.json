@@ -1,0 +1,48 @@
+{
+    "Component": {
+        "prefix": "vInit",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "props": {
+        "prefix": "vProps",
+        "body": [
+            "const ${1:props} = defineProps<{$2}>();"
+        ],
+        "description": "A list/hash of attributes that are exposed to accept data from the parent component. "
+    },
+    "computed": {
+        "prefix": "vComputed",
+        "body": [
+            "const $1 = computed(() => {",
+            "   $2",
+            "});"
+        ],
+        "description": ""
+    },
+    "arrowFunction": {
+        "prefix": "vArrowFunc",
+        "body": [
+            "const $1 = ($2) => {",
+            "   $3",
+            "});"
+        ],
+        "description": ""
+    },
+    "inlineArrowFunction": {
+        "prefix": "vInlineArrowFunc",
+        "body": [
+            "($1) => {$2}"
+        ],
+        "description": ""
+    },
+    "ref": {
+        "prefix": "vRef",
+        "body": [
+            "const ${1:var = ref()}"
+        ],
+        "description": ""
+    }
+}

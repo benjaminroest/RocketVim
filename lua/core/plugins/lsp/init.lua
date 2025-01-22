@@ -6,14 +6,13 @@ local M = {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+    "folke/neodev.nvim", -- loading as dependency ensures it's loaded before lua_ls
   },
 }
 
 M.config = function()
   require "core.plugins.lsp.mason"
   require("core.plugins.lsp.handlers").setup()
-  require "core.plugins.lsp.null-ls"
 
   utils.on_attach(function(client, buffer)
         require("core.plugins.lsp.keymaps").on_attach(client, buffer)

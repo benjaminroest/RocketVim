@@ -39,7 +39,7 @@ M.config = function()
   -- Get the buffer's filename.
   local function get_current_filename()
     local bufname = vim.api.nvim_buf_get_name(0)
-    return bufname ~= "" and vim.fn.fnamemodify(bufname, ":t") or "[No Name]"
+    return bufname ~= "" and vim.fn.fnamemodify(bufname, ":t") or ""
   end
 
   Icon_hl_cache = {}
@@ -60,7 +60,7 @@ M.config = function()
 
     -- Fallback settings.
     if icon == nil and icon_highlight_group == nil then
-      icon = ""
+      icon = ""
       icon_highlight_group = "DevIconDefault"
     end
 
@@ -108,7 +108,7 @@ M.config = function()
 
   require("lualine").setup {
     options = {
-      theme = "auto",
+      theme = "kanagawa",
       icons_enabled = true,
       component_separators = { "", "" },
       disabled_filetypes = { "alpha" },

@@ -45,10 +45,6 @@ local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_set_keymap
   local opts = { noremap = true, silent = true }
 
-  keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<cr>", opts)
-  keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-  keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<cr>", opts)
-  keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_definitions()<cr>", opts)
   keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)

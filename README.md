@@ -13,5 +13,5 @@
 ```
 
 # Install
-**Minimum version**: `nvim`: `0.9`
+**Minimum version**: `nvim`: `0.10`
 1. Copy all files from this repo to ~/.config/nvim

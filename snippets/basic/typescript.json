@@ -1,0 +1,9 @@
+{
+    "props": {
+        "prefix": "props",
+        "body": [
+            "props"
+        ],
+        "description": "A list/hash of attributes that are exposed to accept data from the parent component. "
+    },
+}

@@ -30,6 +30,18 @@ M.definitions = {
       command = "normal! zz",
     },
   },
+  {
+    "BufDelete",
+    {
+      group = "_general_settings",
+      pattern = "",
+      desc = "Show dashboard",
+      callback = function()
+        local buffers = vim.api.nvim_list_bufs()
+        print(#buffers)
+      end,
+    },
+  },
   -- {
   --   "BufWritePre",
   --   {
@@ -52,11 +64,17 @@ M.definitions = {
     "FileType",
     {
       group = "_lsp_settings",
-      pattern = { "lspinfo", "lsp-installer", "null-ls-info" },
+      pattern = { "lspinfo", "lsp-installer" },
       desc = "Quit with q",
       command = "nnoremap <silent> <buffer> q :close<CR>",
     },
   },
+  {
+    "CmdwinEnter",
+    {
+      command = "nnoremap <silent> <buffer> q :quit<CR>",
+    }
+  }
 }
 
 function M.define_autocmds(definitions)

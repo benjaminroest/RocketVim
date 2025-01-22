@@ -15,6 +15,9 @@ local M = {
       disable = { "" }, -- list of language that will be disabled
       additional_vim_regex_highlighting = true,
     },
+    autotag = {
+      enable = true,
+    },
     indent = {
       enable = true,
       disable = { "yaml" },
@@ -28,10 +31,10 @@ local M = {
           node_decremental = "<bs>",
         },
       },
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
+    -- context_commentstring = {
+    --   enable = true,
+    --   enable_autocmd = false,
+    -- },
     -- playground = {
     --   enable = true,
     --   disable = {},
@@ -54,6 +57,7 @@ local M = {
   config = function(_, opts)
     local configs = require "nvim-treesitter.configs"
     configs.setup(opts)
+    require('nvim-treesitter.configs').setup {}
   end
 }
 

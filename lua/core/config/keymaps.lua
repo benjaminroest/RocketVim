@@ -4,10 +4,11 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+map("i", "jk", "<Esc>")
+
 -- Buffers
 map("n", "<TAB>", ":BufferLineCycleNext<cr>")
 map("n", "<S-TAB>", ":BufferLineCyclePrev<cr>")
-map("n", "<S-x>", "<cmd>Bdelete<cr>")
 
 -- Window movement
 map("n", "<C-h>", "<C-w>h", { silent = true })
@@ -59,7 +60,7 @@ map("n", "˚", ":m .-2<cr>==")
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Misc
-map("n", "<cr>", ":noh<cr><cr>")
+map("n", "Q", "@q")
 
 local function smart_dd()
   if vim.api.nvim_get_current_line():match("^%s*$") then

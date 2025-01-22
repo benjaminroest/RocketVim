@@ -1,5 +1,12 @@
 return {
   "abecodes/tabout.nvim",
+  requires = {
+    "nvim-treesitter/nvim-treesitter",
+    "hrsh7th/nvim-cmp"
+  },
+  opt = true,  -- Set this to true if the plugin is optional
+  event = 'InsertCharPre', -- Set the event to 'InsertCharPre' for better compatibility
+  priority = 1000,
   opts = {
     tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
     backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
