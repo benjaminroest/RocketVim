@@ -26,6 +26,7 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.ignorecase = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.confirm = true
 -- vim.o.statuscolumn = "%=%l%s%C"
 
 -- Set leader

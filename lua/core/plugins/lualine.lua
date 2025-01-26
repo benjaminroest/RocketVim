@@ -145,19 +145,18 @@ M.config = function()
           end,
               color = fg("Constant") ,
         },
-            {
-
+            -- {
             -- stylua: ignore
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = fg("Statement")
-            },
+            --   function() return require("noice").api.status.command.get() end,
+            --   cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+            --   color = fg("Statement")
+            -- },
             -- stylua: ignore
-            {
-              function() return require("noice").api.status.mode.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = fg("Constant") ,
-            },
+            -- {
+            --   function() return require("noice").api.status.mode.get() end,
+            --   cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+            --   color = fg("Constant") ,
+            -- },
         { "diagnostics", sources = { "nvim_lsp" } },
       },
       lualine_y = {

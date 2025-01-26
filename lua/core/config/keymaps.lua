@@ -27,7 +27,7 @@ map("n", "H", "^")
 map("n", "L", "$")
 
 -- quit
-map("n", "<leader>q", "<cmd>lua require('core.utils').smart_quit()<CR>", { desc = "Quit" })
+map("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit" })
 
 map("n", "J", "mzJ`z")
 map("n", "<C-d>", "<C-d>zz")

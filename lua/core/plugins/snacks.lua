@@ -12,6 +12,7 @@ return {
     statuscolumn = { enabled = true, },
     indent = { enabled = true },
     zenmode = { enabled = true },
+    notifier = { enabled = true },
     dashboard = {
       enabled = true,
       preset = {

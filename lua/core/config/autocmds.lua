@@ -30,18 +30,18 @@ M.definitions = {
       command = "normal! zz",
     },
   },
-  {
-    "BufDelete",
-    {
-      group = "_general_settings",
-      pattern = "",
-      desc = "Show dashboard",
-      callback = function()
-        local buffers = vim.api.nvim_list_bufs()
-        print(#buffers)
-      end,
-    },
-  },
+  -- {
+  --   "BufDelete",
+  --   {
+  --     group = "_general_settings",
+  --     pattern = "",
+  --     desc = "Show dashboard",
+  --     callback = function()
+  --       local buffers = vim.api.nvim_list_bufs()
+  --       print(#buffers)
+  --     end,
+  --   },
+  -- },
   -- {
   --   "BufWritePre",
   --   {
