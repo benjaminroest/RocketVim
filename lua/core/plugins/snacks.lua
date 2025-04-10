@@ -96,7 +96,6 @@ return {
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
     { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
-    { "<leader>qp", function() Snacks.picker.projects() end, desc = "Projects" },
     -- LSP
     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
     { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
