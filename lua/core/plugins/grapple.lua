@@ -4,7 +4,6 @@ return {
     { "nvim-tree/nvim-web-devicons" }
   },
   opts = {
-    scope = "git_branch",
     quick_select = "123456789",
     icons = true,
   },
