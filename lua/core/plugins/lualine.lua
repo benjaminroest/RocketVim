@@ -18,7 +18,7 @@ M.config = function()
 
   local function get_native_lsp()
     local buf_ft = get_current_filetype()
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients()
     if next(clients) == nil then
       return "None"
     end
@@ -140,7 +140,7 @@ M.config = function()
             return icon .. (status.message or "gdggree")
           end,
           cond = function()
-            local ok, clients = pcall(vim.lsp.get_active_clients, { name = "copilot", bufnr = 0 })
+            local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
             return ok and #clients > 0
           end,
               color = fg("Constant") ,

@@ -7,9 +7,10 @@ local M = {
   },
   event = "BufReadPost",
   opts = {
-    ensure_installed = "all",
+    ensure_installed = {},
     sync_install = false,
     ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
+    auto_install = true,
     highlight = {
       enable = true, -- false will disable the whole extension
       disable = { "" }, -- list of language that will be disabled

@@ -17,7 +17,7 @@ M.definitions = {
       pattern = "*",
       desc = "Highlight text on yank",
       callback = function()
-        require("vim.highlight").on_yank { higroup = "Search", timeout = 200 }
+        require("vim.hl").on_yank { higroup = "Search", timeout = 200 }
       end,
     },
   },
