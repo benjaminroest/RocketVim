@@ -38,6 +38,8 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 -- Better indendting
+map("n", "<", "<<", { noremap = true, silent = true })
+map("n", ">", ">>", { noremap = true, silent = true })
 map("v", "<", "<gv", { noremap = true, silent = true })
 map("v", ">", ">gv", { noremap = true, silent = true })
 
@@ -71,3 +73,102 @@ local function smart_dd()
 end
 
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
+
+local function lsp_keymaps(client, bufnr)
+  local lsp = vim.lsp.buf
+  local methods = vim.lsp.protocol.Methods
+
+  --- @param mode string|string[]
+  --- @param lhs string
+  --- @param rhs string|function
+  --- @param desc string
+  local function map(mode, lhs, rhs, desc)
+    mode = mode or "n"
+    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+  end
+
+  map(
+    "n",
+    "<leader>cd",
+    function() vim.diagnostic.open_float({ border = "solid" }) end,
+    "[v]iew [d]iagnostic float"
+  )
+
+  map( "n", "]d", function() vim.diagnostic.jump({count=1, float=true}) end, "Next Diagnostic")
+
+  map( "n", "[d", function() vim.diagnostic.jump({count=-1, float=true}) end, "Prev Diagnostic")
+
+  if client:supports_method(methods.textDocument_formatting) then
+    map( "n", "<leader>cf", function() vim.lsp.buf.format { async = true } end, "Format Document")
+  end
+
+  if client:supports_method(methods.textDocument_rangeFormatting) then
+    map( "v", "<leader>cf", function() vim.lsp.buf.format() end, "Format Selection")
+  end
+
+  if client:supports_method(methods.textDocument_codeAction) then
+    map( "n", "<leader>ca", function() vim.lsp.buf.code_action() end, "Code Action")
+    map( "n", "<leader>ca", function()
+      vim.lsp.buf.code_action {
+        context = {
+          only = {
+            "source",
+          },
+          diagnostics = {},
+        },
+      }
+    end, "Code Action")
+  end
+
+  if client:supports_method(methods.textDocument_rename) then
+    map(
+      "n",
+      "<leader>cr",
+      function()
+        vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
+          callback = function()
+            local key = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
+            vim.api.nvim_feedkeys(key, "c", false)
+            vim.api.nvim_feedkeys("0", "n", false)
+            return true
+          end,
+        })
+        vim.lsp.buf.rename()
+      end,
+      "Rename"
+    )
+  end
+
+
+  if client:supports_method(methods.textDocument_inlayHint) then
+    map(
+      "n",
+      "<leader>th",
+      function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end,
+      "[t]oggle inlay [h]ints"
+    )
+  end
+
+  if client:supports_method(methods.textDocument_declaration) then
+    map("n", "<leader>de", lsp.declaration, "go to [de]claration")
+  end
+
+  if client:supports_method(methods.textDocument_hover) then
+    map("n", "K", function() lsp.hover({ border = "rounded" }) end, "LSP hover")
+  end
+
+  if client:supports_method(methods.textDocument_signatureHelp) then
+    map("i", "<C-k>", lsp.signature_help, "LSP signature help")
+  end
+end
+
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  desc = "Configure LSP keymaps",
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    lsp_keymaps(client, args.buf)
+  end,
+})

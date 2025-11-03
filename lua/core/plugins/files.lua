@@ -1,5 +1,6 @@
 return {
   "echasnovski/mini.files",
+  priority = 1000,
   opts = {
     windows = {
       preview = true,
