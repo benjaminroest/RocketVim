@@ -1,7 +1,12 @@
-require "core.globals"
-require "core.config.settings"
-require "core.config.lazy"
-require "core.config.keymaps"
-require "core.config.autocmds"
-require "core.config.autocmds"
-require "core.ui"
+require("config.options")
+require("config.commands")
+require("config.keymaps")
+
+require("plugins")
+require("setup.ui")
+require("setup.statusline")
+require("setup.coding")
+require("setup.lsp")
+require("setup.navigation")
+require("setup.snacks")
+
