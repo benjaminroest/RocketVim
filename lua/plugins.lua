@@ -20,6 +20,7 @@ vim.pack.add({
   { src = gh("saghen/blink.cmp"), version = "v1", },
   gh("nvim-mini/mini.pairs"),
   gh("nvim-mini/mini.surround"),
+  gh("nvim-mini/mini.ai"),
 
   --- LSP
   gh("mason-org/mason.nvim"),

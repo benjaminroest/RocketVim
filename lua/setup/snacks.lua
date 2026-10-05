@@ -38,6 +38,11 @@ Snacks.setup({
         },
       },
     },
+  },
+  zen = {
+    toggles = {
+      dim = false
+    }
   }
 })
 
@@ -54,5 +59,7 @@ vim.keymap.set("n", "gd", Snacks.picker.lsp_definitions, { desc = "Goto Definiti
 vim.keymap.set("n", "gr", Snacks.picker.lsp_references, { nowait = true, desc = "References" })
 vim.keymap.set("n", "gI", Snacks.picker.lsp_implementations, { desc = "Goto Implementation" })
 vim.keymap.set("n", "gy", Snacks.picker.lsp_type_definitions, { desc = "Goto T[y]pe Definition" })
+
+vim.keymap.set("n", "<leader>z", Snacks.zen.zen, { desc = "Toggle [z]en mode" })
 
 
