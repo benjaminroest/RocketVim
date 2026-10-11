@@ -49,12 +49,13 @@ Snacks.setup({
   }
 })
 
-vim.keymap.set("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Find files", })
-vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep", })
-vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Find buffers", })
+vim.keymap.set("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Find buffers" })
 
-vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Find keymaps", })
-vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Find help pages", })
+vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Find help pages" })
+vim.keymap.set("n", "<leader>fd", function() Snacks.picker.git_diff() end, { desc = "Git Diff (Hunks)" })
 
 -- LSP 
 vim.keymap.set("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
