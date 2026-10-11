@@ -40,26 +40,27 @@ Snacks.setup({
     },
   },
   zen = {
-    toggles = {
-      dim = false
+    enabled = true,
+    win = {
+      backdrop = {
+        transparent = false
+      }
     }
   }
 })
 
-vim.keymap.set("n", "<leader><space>", Snacks.picker.files, { desc = "Find files", })
-vim.keymap.set("n", "<leader>/", Snacks.picker.grep, { desc = "Grep", })
-vim.keymap.set("n", "<leader>fb", Snacks.picker.buffers, { desc = "Find buffers", })
+vim.keymap.set("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Find files", })
+vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep", })
+vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Find buffers", })
 
-vim.keymap.set("n", "<leader>fk", Snacks.picker.keymaps, { desc = "Find keymaps", })
-vim.keymap.set("n", "<leader>fh", Snacks.picker.help, { desc = "Find help pages", })
+vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Find keymaps", })
+vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Find help pages", })
 
 -- LSP 
-vim.keymap.set("n", "<leader>fs", Snacks.picker.lsp_symbols, { desc = "LSP Symbols" })
-vim.keymap.set("n", "gd", Snacks.picker.lsp_definitions, { desc = "Goto Definition" })
-vim.keymap.set("n", "gr", Snacks.picker.lsp_references, { nowait = true, desc = "References" })
-vim.keymap.set("n", "gI", Snacks.picker.lsp_implementations, { desc = "Goto Implementation" })
-vim.keymap.set("n", "gy", Snacks.picker.lsp_type_definitions, { desc = "Goto T[y]pe Definition" })
+vim.keymap.set("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
+vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
+vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
+vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
+vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
 
-vim.keymap.set("n", "<leader>z", Snacks.zen.zen, { desc = "Toggle [z]en mode" })
-
-
+vim.keymap.set("n", "<leader>z", function() Snacks.zen() end, { desc = "Toggle [z]en mode" })

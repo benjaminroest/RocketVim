@@ -1,6 +1,7 @@
 require("config.options")
 require("config.commands")
 require("config.keymaps")
+require("config.filetypes")
 
 require("plugins")
 require("setup.ui")
