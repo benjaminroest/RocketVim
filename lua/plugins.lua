@@ -23,7 +23,5 @@ vim.pack.add({
   gh("nvim-mini/mini.ai"),
 
   --- LSP
-  gh("mason-org/mason.nvim"),
-  gh("mason-org/mason-lspconfig.nvim"),
   gh("neovim/nvim-lspconfig"),
 })

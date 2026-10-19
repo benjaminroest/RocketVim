@@ -25,6 +25,11 @@
           # LSPs
           lua-language-server
           nixd
+          alejandra
+          rust-analyzer
+          rustfmt
+          black
+          python313Packages.python-lsp-server
 
           # other tools
           lua5_1

@@ -1,0 +1,249 @@
+diff --git a/flake.nix b/flake.nix
+index de7771e..ea704e2 100644
+--- a/flake.nix
++++ b/flake.nix
+@@ -25,6 +25,11 @@
+           # LSPs
+           lua-language-server
+           nixd
++          alejandra
++          rust-analyzer
++          rustfmt
++          black
++          python313Packages.python-lsp-server
+ 
+           # other tools
+           lua5_1
+diff --git a/init.lua b/init.lua
+index 8e0d9c9..787ee6d 100644
+--- a/init.lua
++++ b/init.lua
+@@ -8,6 +8,7 @@ require("setup.ui")
+ require("setup.statusline")
+ require("setup.coding")
+ require("setup.lsp")
++require("setup.treesitter")
+ require("setup.navigation")
+ require("setup.snacks")
+ 
+diff --git a/lua/config/options.lua b/lua/config/options.lua
+index ebe96d3..e2fc5ee 100644
+--- a/lua/config/options.lua
++++ b/lua/config/options.lua
+@@ -18,6 +18,19 @@ vim.o.ignorecase = true
+ vim.o.splitbelow = true
+ vim.o.splitright = true
+ 
++vim.o.foldenable = true
++vim.o.foldmethod = "expr"
++vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
++vim.o.foldtext = ""
++vim.o.foldlevelstart = 99
++vim.opt.fillchars = {
++  fold = " ",
++  foldopen = "▾",
++  foldclose = "▸",
++  foldinner = " ",
++  foldsep = " ",
++}
++
+ vim.wo.relativenumber = true
+ vim.wo.number = true
+ vim.wo.scrolloff = 8
+diff --git a/lua/plugins.lua b/lua/plugins.lua
+index c2626e1..b5dadec 100644
+--- a/lua/plugins.lua
++++ b/lua/plugins.lua
+@@ -23,7 +23,5 @@ vim.pack.add({
+   gh("nvim-mini/mini.ai"),
+ 
+   --- LSP
+-  gh("mason-org/mason.nvim"),
+-  gh("mason-org/mason-lspconfig.nvim"),
+   gh("neovim/nvim-lspconfig"),
+ })
+diff --git a/lua/setup/coding.lua b/lua/setup/coding.lua
+index 027b1a6..ffc5f99 100644
+--- a/lua/setup/coding.lua
++++ b/lua/setup/coding.lua
+@@ -1,9 +1,3 @@
+-vim.api.nvim_create_autocmd("FileType", {
+-  callback = function(args)
+-    pcall(vim.treesitter.start, args.buf)
+-  end,
+-})
+-
+ require("blink.cmp").setup({
+   signature = { enabled = true },
+   keymap = { preset = "enter" },
+diff --git a/lua/setup/lsp.lua b/lua/setup/lsp.lua
+index c167404..a354f05 100644
+--- a/lua/setup/lsp.lua
++++ b/lua/setup/lsp.lua
+@@ -1,6 +1,9 @@
+-require("mason").setup()
+-
+-require("mason-lspconfig").setup()
++vim.lsp.enable({
++	"lua_ls",
++	"pylsp",
++	"nixd",
++	"rust_analyzer",
++})
+ 
+ vim.keymap.set( "n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action"})
+ vim.keymap.set( "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+diff --git a/lua/setup/snacks.lua b/lua/setup/snacks.lua
+index be692f0..18a3e6d 100644
+--- a/lua/setup/snacks.lua
++++ b/lua/setup/snacks.lua
+@@ -51,7 +51,7 @@ Snacks.setup({
+ 
+ vim.keymap.set("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Find files" })
+ vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
+-vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Find buffers" })
++vim.keymap.set("n", "<leader>b", function() Snacks.picker.buffers() end, { desc = "Find buffers" })
+ 
+ vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Find keymaps" })
+ vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Find help pages" })
+diff --git a/lua/setup/statusline.lua b/lua/setup/statusline.lua
+index ab13a01..1d1db16 100644
+--- a/lua/setup/statusline.lua
++++ b/lua/setup/statusline.lua
+@@ -15,6 +15,14 @@ local function get_mode()
+ 	return "%#" .. m[2] .. "#" .. m[1] .. "%#StBase#"
+ end
+ 
++_G.StatuslineGitClick = function()
++	Snacks.picker.git_branches()
++end
++
++_G.StatuslineDiffClick = function()
++	Snacks.picker.git_diff()
++end
++
+ local function get_git()
+ 	local dict = vim.b.gitsigns_status_dict
+ 	if not dict then
+@@ -25,12 +33,27 @@ local function get_git()
+ 	local added = dict.added and dict.added > 0 and ("%#StGitAdd#+" .. dict.added .. " ") or ""
+ 	local changed = dict.changed and dict.changed > 0 and ("%#StGitChange#~" .. dict.changed .. " ") or ""
+ 	local removed = dict.removed and dict.removed > 0 and ("%#StGitDelete#-" .. dict.removed .. " ") or ""
+-
+ 	local diff = added .. changed .. removed
+-	if branch == "" and diff == "" then
++
++	local clickable_diff = ""
++	if diff ~= "" then
++		clickable_diff = "%@v:lua.StatuslineDiffClick@"
++			.. diff
++			.. "%T"
++	end
++
++	local clickable_branch = ""
++	if branch ~= "" then
++		clickable_branch = "%@v:lua.StatuslineGitClick@"
++			.. branch
++			.. "%T"
++	end
++
++	if clickable_diff == "" and clickable_branch == "" then
+ 		return ""
+ 	end
+-	return diff .. branch .. ""
++
++	return clickable_diff .. clickable_branch .. "%#StBase#"
+ end
+ 
+ local function get_lsp_diagnostic_count()
+@@ -56,17 +79,53 @@ local function get_lsp_diagnostic_count()
+ 		.. info_icon
+ end
+ 
++local function get_lsp()
++	local clients = vim.lsp.get_clients({
++		bufnr = vim.api.nvim_get_current_buf(),
++	})
++
++	if #clients == 0 then
++		return ""
++	end
++
++	return "%#StLsp#"
++		.. "%@v:lua.StatuslineLspClick@"
++		.. " 󰒋"
++		.. "%T"
++		.. "%#StBase#"
++end
++
++local function get_treesitter()
++	local bufnr = vim.api.nvim_get_current_buf()
++	local parser = vim.treesitter.get_parser(bufnr, nil, { error = false })
++
++	if not parser then
++		return ""
++	end
++
++	local active = vim.treesitter.highlighter.active[bufnr]
++
++	if not active then
++		return ""
++	end
++
++	return "%#StTreesitter#  %#StBase#"
++end
++
+ function _G.CustomStatusLine()
+ 	local is_active = vim.g.statusline_winid == vim.fn.win_getid()
+ 	local is_modified = vim.api.nvim_get_option_value("modified", { buf = 0 })
+ 	local modified_icon = is_modified and "" or "󱓞"
+-	local filename = "%t"
++  local filename = "%t"
++  -- local filename = vim.fn.expand("%:t") ~= "" and "%t" or ""
+ 	local space = "%="
+ 	if not is_active then
+ 		return "%#StBase#" .. filename .. space .. "not active"
+ 	end
+ 	return "%#StBase# "
++		.. get_mode()
+ 		.. "%#FileModifiedIcon#"
++		.. " "
+ 		.. modified_icon
+ 		.. " "
+ 		.. "%#StBase#"
+@@ -76,7 +135,8 @@ function _G.CustomStatusLine()
+ 		.. "%#StBase#"
+ 		.. space
+ 		.. get_git()
+-		.. get_mode()
++		.. get_lsp()
++		.. get_treesitter()
+ end
+ 
+ vim.opt.statusline = "%!v:lua.CustomStatusLine()"
+@@ -113,3 +173,25 @@ vim.api.nvim_set_hl(0, "InfoHl", { fg = "#B0BA99", bg = "NONE" })
+ vim.api.nvim_set_hl(0, "RecordingHl", { fg = "#e67e80", bg = "NONE" })
+ vim.api.nvim_set_hl(0, "LazyCheckHl", { fg = "#F7F1DE", bg = "NONE" })
+ vim.api.nvim_set_hl(0, "StBase", { bg = "NONE" }) -- Transparent background
++vim.api.nvim_set_hl(0, "StTreesitter", { fg = "#A5E9DD", bg = "NONE" })
++vim.api.nvim_set_hl(0, "StLsp", { fg = "#A5E9DD", bg = "NONE" })
++
++_G.StatuslineLspClick = function()
++	local clients = vim.lsp.get_clients({
++		bufnr = vim.api.nvim_get_current_buf(),
++	})
++
++	if #clients == 0 then
++		return
++	end
++
++	local names = {}
++	for _, client in ipairs(clients) do
++		table.insert(names, client.name)
++	end
++
++	vim.notify(
++		"Active LSPs: " .. table.concat(names, ", "),
++		vim.log.levels.INFO
++	)
++end

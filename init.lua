@@ -8,6 +8,7 @@ require("setup.ui")
 require("setup.statusline")
 require("setup.coding")
 require("setup.lsp")
+require("setup.treesitter")
 require("setup.navigation")
 require("setup.snacks")
 

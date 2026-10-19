@@ -18,6 +18,19 @@ vim.o.ignorecase = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 
+vim.o.foldenable = true
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = ""
+vim.o.foldlevelstart = 99
+vim.opt.fillchars = {
+  fold = " ",
+  foldopen = "▾",
+  foldclose = "▸",
+  foldinner = " ",
+  foldsep = " ",
+}
+
 vim.wo.relativenumber = true
 vim.wo.number = true
 vim.wo.scrolloff = 8

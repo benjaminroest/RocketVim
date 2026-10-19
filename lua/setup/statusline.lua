@@ -15,6 +15,14 @@ local function get_mode()
 	return "%#" .. m[2] .. "#" .. m[1] .. "%#StBase#"
 end
 
+_G.StatuslineGitClick = function()
+	Snacks.picker.git_branches()
+end
+
+_G.StatuslineDiffClick = function()
+	Snacks.picker.git_diff()
+end
+
 local function get_git()
 	local dict = vim.b.gitsigns_status_dict
 	if not dict then
@@ -25,12 +33,27 @@ local function get_git()
 	local added = dict.added and dict.added > 0 and ("%#StGitAdd#+" .. dict.added .. " ") or ""
 	local changed = dict.changed and dict.changed > 0 and ("%#StGitChange#~" .. dict.changed .. " ") or ""
 	local removed = dict.removed and dict.removed > 0 and ("%#StGitDelete#-" .. dict.removed .. " ") or ""
-
 	local diff = added .. changed .. removed
-	if branch == "" and diff == "" then
+
+	local clickable_diff = ""
+	if diff ~= "" then
+		clickable_diff = "%@v:lua.StatuslineDiffClick@"
+			.. diff
+			.. "%T"
+	end
+
+	local clickable_branch = ""
+	if branch ~= "" then
+		clickable_branch = "%@v:lua.StatuslineGitClick@"
+			.. branch
+			.. "%T"
+	end
+
+	if clickable_diff == "" and clickable_branch == "" then
 		return ""
 	end
-	return diff .. branch .. ""
+
+	return clickable_diff .. clickable_branch .. "%#StBase#"
 end
 
 local function get_lsp_diagnostic_count()
@@ -56,17 +79,53 @@ local function get_lsp_diagnostic_count()
 		.. info_icon
 end
 
+local function get_lsp()
+	local clients = vim.lsp.get_clients({
+		bufnr = vim.api.nvim_get_current_buf(),
+	})
+
+	if #clients == 0 then
+		return ""
+	end
+
+	return "%#StLsp#"
+		.. "%@v:lua.StatuslineLspClick@"
+		.. " 󰒋"
+		.. "%T"
+		.. "%#StBase#"
+end
+
+local function get_treesitter()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local parser = vim.treesitter.get_parser(bufnr, nil, { error = false })
+
+	if not parser then
+		return ""
+	end
+
+	local active = vim.treesitter.highlighter.active[bufnr]
+
+	if not active then
+		return ""
+	end
+
+	return "%#StTreesitter#  %#StBase#"
+end
+
 function _G.CustomStatusLine()
 	local is_active = vim.g.statusline_winid == vim.fn.win_getid()
 	local is_modified = vim.api.nvim_get_option_value("modified", { buf = 0 })
 	local modified_icon = is_modified and "" or "󱓞"
-	local filename = "%t"
+  local filename = "%t"
+  -- local filename = vim.fn.expand("%:t") ~= "" and "%t" or ""
 	local space = "%="
 	if not is_active then
 		return "%#StBase#" .. filename .. space .. "not active"
 	end
 	return "%#StBase# "
+		.. get_mode()
 		.. "%#FileModifiedIcon#"
+		.. " "
 		.. modified_icon
 		.. " "
 		.. "%#StBase#"
@@ -76,7 +135,8 @@ function _G.CustomStatusLine()
 		.. "%#StBase#"
 		.. space
 		.. get_git()
-		.. get_mode()
+		.. get_lsp()
+		.. get_treesitter()
 end
 
 vim.opt.statusline = "%!v:lua.CustomStatusLine()"
@@ -113,3 +173,25 @@ vim.api.nvim_set_hl(0, "InfoHl", { fg = "#B0BA99", bg = "NONE" })
 vim.api.nvim_set_hl(0, "RecordingHl", { fg = "#e67e80", bg = "NONE" })
 vim.api.nvim_set_hl(0, "LazyCheckHl", { fg = "#F7F1DE", bg = "NONE" })
 vim.api.nvim_set_hl(0, "StBase", { bg = "NONE" }) -- Transparent background
+vim.api.nvim_set_hl(0, "StTreesitter", { fg = "#A5E9DD", bg = "NONE" })
+vim.api.nvim_set_hl(0, "StLsp", { fg = "#A5E9DD", bg = "NONE" })
+
+_G.StatuslineLspClick = function()
+	local clients = vim.lsp.get_clients({
+		bufnr = vim.api.nvim_get_current_buf(),
+	})
+
+	if #clients == 0 then
+		return
+	end
+
+	local names = {}
+	for _, client in ipairs(clients) do
+		table.insert(names, client.name)
+	end
+
+	vim.notify(
+		"Active LSPs: " .. table.concat(names, ", "),
+		vim.log.levels.INFO
+	)
+end
