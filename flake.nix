@@ -29,7 +29,7 @@
           rust-analyzer
           rustfmt
           black
-          python313Packages.python-lsp-server
+          basedpyright
 
           # other tools
           lua5_1

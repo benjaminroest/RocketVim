@@ -1,4 +1,4 @@
-vim.cmd("colorscheme teide-darker")
+vim.cmd.colorscheme("teide-darker")
 
 vim.o.cmdheight = 0
 require("vim._core.ui2").enable({ msg = { targets = "msg" } })
