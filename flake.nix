@@ -30,6 +30,7 @@
           rustfmt
           black
           basedpyright
+          ruff
 
           # other tools
           lua5_1

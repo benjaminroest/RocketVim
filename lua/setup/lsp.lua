@@ -2,7 +2,8 @@ vim.lsp.enable({
 	"lua_ls",
 	"nixd",
 	"rust_analyzer",
-  "basedpyright"
+  "basedpyright",
+  "ruff"
 })
 
 vim.keymap.set( "n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action"})
