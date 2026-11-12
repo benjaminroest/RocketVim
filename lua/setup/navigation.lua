@@ -11,8 +11,16 @@ MiniFiles.setup({
 })
 
 vim.keymap.set("n", "-", function()
-  MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-end)
+  if MiniFiles.close() then return end
+
+  local path = vim.api.nvim_buf_get_name(0)
+  if path == "" or not vim.uv.fs_stat(path) then
+    local dir = path ~= "" and vim.fs.dirname(path) or nil
+    path = (dir and vim.uv.fs_stat(dir)) and dir or vim.uv.cwd()
+  end
+
+  MiniFiles.open(path, false)
+end, { desc = "Toggle mini.files" })
 
 local flash = require("flash")
 flash.setup({
